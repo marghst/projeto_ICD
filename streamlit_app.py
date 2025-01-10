@@ -44,13 +44,12 @@ st.set_page_config(
 )
 
 import os
-import pandas as pd
 
-# Caminho absoluto ou relativo para o diretório onde o ficheiro CSV está localizado
-file_path = os.path.join('marghst', 'projeto_icd', 'master', 'dados_streamlit', 'df_all_geral.csv')
+base = os.path.dirname(os.path.abspath(__file__))
+file = os.path.join(base, "dados_streamlit/df_combined.csv")
 
-# Ler o ficheiro CSV
-df_all = pd.read_csv(file_path)
+with open(file, "r") as f:
+    
 # Supondo que 'df_all' contenha os dados com as colunas 'year', 'affiliation-country', e 'count'
 df_all['count'] = 1  # Inicializar com 1 para representar cada artigo
 df_all = df_all.groupby(['year', 'affiliation-country'], as_index=False).agg({'count': 'sum'})
