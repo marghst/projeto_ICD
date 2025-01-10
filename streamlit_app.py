@@ -53,7 +53,7 @@ file = os.path.join(base, "dados_streamlit", "df_combined.csv")
 # Verificar se o ficheiro existe antes de abrir
 if os.path.exists(file):
     # Ler o ficheiro CSV com pandas
-    df_combined = pd.read_csv(file)
+    df_all = pd.read_csv(file)
     print("Ficheiro carregado com sucesso!")
 else:
     print(f"Ficheiro não encontrado: {file}")
