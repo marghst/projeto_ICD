@@ -43,7 +43,9 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-df_all = pd.read_csv('/workspaces/projeto_ICD/dados_streamlit/df_all_geral.csv')
+import os
+print(os.path.exists('dados_streamlit/df_all_geral.csv'))
+df_all = pd.read_csv('marghst/projeto_icd/master/dados_streamlit/df_all_geral.csv')
 # Supondo que 'df_all' contenha os dados com as colunas 'year', 'affiliation-country', e 'count'
 df_all['count'] = 1  # Inicializar com 1 para representar cada artigo
 df_all = df_all.groupby(['year', 'affiliation-country'], as_index=False).agg({'count': 'sum'})
