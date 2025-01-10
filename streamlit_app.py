@@ -44,11 +44,19 @@ st.set_page_config(
 )
 
 import os
-
+# Caminho base (diretório onde o script está a ser executado)
 base = os.path.dirname(os.path.abspath(__file__))
 
 # Caminho completo para o ficheiro
 file = os.path.join(base, "dados_streamlit", "df_combined.csv")
+
+# Verificar se o ficheiro existe antes de abrir
+if os.path.exists(file):
+    # Ler o ficheiro CSV com pandas
+    df_combined = pd.read_csv(file)
+    print("Ficheiro carregado com sucesso!")
+else:
+    print(f"Ficheiro não encontrado: {file}")
     
 # Supondo que 'df_all' contenha os dados com as colunas 'year', 'affiliation-country', e 'count'
 df_all['count'] = 1  # Inicializar com 1 para representar cada artigo
