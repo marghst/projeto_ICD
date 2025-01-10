@@ -89,8 +89,19 @@ fig1.update_layout(
     paper_bgcolor="black",  # Fundo da área de papel também preto
     plot_bgcolor="black"    # Fundo do gráfico também preto
 )
+base = os.path.dirname(os.path.abspath(__file__))
 
-df_authors = pd.read_csv('/workspaces/projeto_ICD/dados_streamlit/df_authors.csv')
+# Caminho completo para o ficheiro
+file = os.path.join(base, "dados_streamlit", "df_authors.csv")
+
+# Verificar se o ficheiro existe antes de abrir
+if os.path.exists(file):
+    # Ler o ficheiro CSV com pandas
+    df_authors = pd.read_csv(file)
+    print("Ficheiro carregado com sucesso!")
+else:
+    print(f"Ficheiro não encontrado: {file}")
+    
 # Definir as colunas obrigatórias
 # Definição das colunas e dados (ajustar conforme necessário)
 required_columns = ['author', 'n_artigos_pub', 'affiliation', 'country']
