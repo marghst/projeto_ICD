@@ -60,7 +60,7 @@ else:
     
 # Supondo que 'df_all' contenha os dados com as colunas 'year', 'affiliation-country', e 'count'
 df_all['count'] = 1  # Inicializar com 1 para representar cada artigo
-df_all = df_all.groupby(['year', 'affiliation-country'], as_index=False).agg({'count': 'sum'})
+df_all = df_all.groupby(['ano', 'affiliation-country'], as_index=False).agg({'count': 'sum'})
 
 # Encontrar o valor máximo de 'count' em qualquer país ao longo de todos os anos
 max_count = df_all['count'].max()
@@ -73,7 +73,7 @@ fig1 = px.choropleth(
     color="count",  # Usando a coluna 'count' para a cor
     color_continuous_scale=custom_colors,
     hover_name="affiliation-country",  # Para exibir o nome do país
-    animation_frame="year",  # Para animar o mapa ao longo dos anos
+    animation_frame="ano",  # Para animar o mapa ao longo dos anos
     range_color=[0, max_count]  # Define a escala de cor de 0 até o valor máximo fixo
 )
 
