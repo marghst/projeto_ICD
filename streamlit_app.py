@@ -46,9 +46,9 @@ st.set_page_config(
 import os
 
 base = os.path.dirname(os.path.abspath(__file__))
-file = os.path.join(base, "dados_streamlit/df_combined.csv")
 
-with open(file, "r") as f:
+# Caminho completo para o ficheiro
+file = os.path.join(base, "dados_streamlit", "df_combined.csv")
     
 # Supondo que 'df_all' contenha os dados com as colunas 'year', 'affiliation-country', e 'count'
 df_all['count'] = 1  # Inicializar com 1 para representar cada artigo
